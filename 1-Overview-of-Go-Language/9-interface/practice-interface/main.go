@@ -25,11 +25,12 @@ func main() {
 		Breed: "Henry",
 	}
 	printInfo(dog)
-	//or
-
-	var dog2 Animal
-
-	log.Println("Hi", dog2.NumberOfLegs())
+	gorilla := Gorilla{
+		Name:          "Samson",
+		color:         "Black",
+		numberOfTeeth: 6,
+	}
+	printInfo(gorilla)
 
 }
 
@@ -43,4 +44,12 @@ func (d Dog) NumberOfLegs() int {
 
 func printInfo(a Animal) {
 	log.Println("This Animal says ", a.Says(), "and has", a.NumberOfLegs(), "Legs")
+}
+
+func (d Gorilla) Says() string {
+	return "Grunt"
+}
+
+func (d Gorilla) NumberOfLegs() int {
+	return 2
 }
