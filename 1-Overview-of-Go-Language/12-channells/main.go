@@ -1,13 +1,23 @@
 package main
 
-import "log"
+import (
+	"log"
+	"udemy/1-Overview-of-Go-Language/12-channells/helpers"
+)
+
+const numPoll int = 1000
+
+func CalculateValue(intChan chan int) {
+	randomNumber := helpers.RandomNumbers(numPoll)
+	intChan <- randomNumber
+}
 
 func main() {
 
-	PrintText("Hello World!!!")
+	intChan := make(chan int)
+	defer close(intChan)
+	go CalculateValue(intChan)
+	num := <-intChan
+	log.Println(num)
 
-}
-
-func PrintText(s string) {
-	log.Println(s)
 }
