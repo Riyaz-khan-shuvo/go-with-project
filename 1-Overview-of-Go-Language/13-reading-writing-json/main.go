@@ -6,10 +6,10 @@ import (
 )
 
 type Person struct {
-	firstName string `json:"first_name,string"`
-	lastName  string `json:"last_name"`
-	hairColor string `json:"hair_color"`
-	hasDog    bool   `json:"has_dog"`
+	// firstName string `json:"first_name,string"`
+	// lastName  string `json:"last_name"`
+	// hairColor string `json:"hair_color"`
+	// hasDog    bool   `json:"has_dog"`
 }
 
 func main() {
