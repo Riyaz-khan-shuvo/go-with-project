@@ -2,7 +2,8 @@ package main
 
 import (
 	"log"
-	"udemy/1-Overview-of-Go-Language/12-channells/helpers"
+
+	"github.com/Riyaz-khan-shuvo/go-with-project/1-Overview-of-Go-Language/12-channells/helpers"
 )
 
 const numPoll int = 1000

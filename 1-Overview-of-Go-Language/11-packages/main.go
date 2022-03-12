@@ -2,7 +2,8 @@ package main
 
 import (
 	"log"
-	"udemy/1-Overview-of-Go-Language/11-packages/helpers"
+
+	"github.com/Riyaz-khan-shuvo/go-with-project/1-Overview-of-Go-Language/11-packages/helpers"
 )
 
 func main() {
