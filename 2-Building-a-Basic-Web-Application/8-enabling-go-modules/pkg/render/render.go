@@ -1,8 +1,8 @@
 package render
 
 import (
-	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -15,9 +15,10 @@ func RenderTemplate(w http.ResponseWriter, temp string) {
 
 	//or
 
-	pToTem, err := template.ParseFiles("./template/" + temp)
+	pToTem, err := template.ParseFiles("../../template/" + temp)
 	pToTem.Execute(w, nil)
 	if err != nil {
-		fmt.Println(err.Error())
+		log.Println(err)
+		return
 	}
 }
