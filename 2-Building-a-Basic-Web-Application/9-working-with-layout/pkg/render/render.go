@@ -1,8 +1,9 @@
 package render
 
 import (
-	"fmt"
+	"bytes"
 	"html/template"
+	"log"
 	"net/http"
 	"path/filepath"
 )
@@ -11,35 +12,48 @@ var functions = template.FuncMap{}
 
 func RenderTemplate(w http.ResponseWriter, temp string) {
 
-	_, err := RenderTemplateTest(w)
+	tc, err := CerateTemplateCache()
 	if err != nil {
-		fmt.Println("error getting template cache : ")
+		log.Fatal(err)
+	}
+	t, ok := tc[temp]
 
+	if !ok {
+		log.Fatal(ok)
 	}
-	pToTem, _ := template.ParseFiles("../../templates/" + temp)
-	err = pToTem.Execute(w, nil)
+
+	buf := new(bytes.Buffer)
+
+	_ = t.Execute(buf, nil)
+	_, err = buf.WriteTo(w)
+
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
+
+	// pToTem, _ := template.ParseFiles("../../templates/" + temp)
+	// err := pToTem.Execute(w, nil)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 }
 
-func RenderTemplateTest(w http.ResponseWriter) (map[string]*template.Template, error) {
+// CerateTemplateCache creates template cache as a map
+
+func CerateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 
 	pages, err := filepath.Glob("../../templates/*.gohtml")
 	if err != nil {
 		return myCache, err
 	}
-	fmt.Println("pages : ", pages)
 
 	for _, page := range pages {
 
 		name := filepath.Base(page)
 
 		// ts = template set
-		fmt.Println("page is currently :", name)
 		ts, err := template.New(name).Funcs(functions).ParseFiles(page)
-
 		if err != nil {
 			return myCache, err
 		}
