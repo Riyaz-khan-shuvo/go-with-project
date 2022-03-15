@@ -13,3 +13,6 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 func AboutPage(w http.ResponseWriter, r *http.Request) {
 	render.RenderTem(w, "about.gohtml")
 }
+func ProjectPage(w http.ResponseWriter, r *http.Request) {
+	render.RenderTem(w, "project.gohtml")
+}

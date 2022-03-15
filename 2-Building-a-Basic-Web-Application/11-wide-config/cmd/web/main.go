@@ -22,5 +22,6 @@ func main() {
 	fmt.Println("Listing the server http://localhost" + portNumber)
 	http.HandleFunc("/", handlers.HomePage)
 	http.HandleFunc("/about", handlers.AboutPage)
+	http.HandleFunc("/project", handlers.ProjectPage)
 	http.ListenAndServe(portNumber, nil)
 }
