@@ -10,3 +10,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 	renders.RenderPage(w, "testHome.gohtml")
 }
+func AboutPage(w http.ResponseWriter, r *http.Request) {
+
+	renders.RenderPage(w, "about.gohtml")
+}

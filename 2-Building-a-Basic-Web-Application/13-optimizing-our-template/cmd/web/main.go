@@ -13,6 +13,7 @@ func main() {
 	fmt.Println("Listing the Port http://localhost" + portNumber)
 
 	http.HandleFunc("/", handlers.HomePage)
+	http.HandleFunc("/about", handlers.AboutPage)
 
 	http.ListenAndServe(portNumber, nil)
 
