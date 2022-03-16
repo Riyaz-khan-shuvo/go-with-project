@@ -7,9 +7,17 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/13-optimizing-our-template/pkg/config"
 )
 
 var functions = template.FuncMap{}
+
+var app *config.AppConfig
+
+func NewTemplates(a *config.AppConfig) {
+	app = a
+}
 
 func RenderPage(w http.ResponseWriter, temp string) {
 
