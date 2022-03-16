@@ -20,11 +20,12 @@ func NewTemplates(a *config.AppConfig) {
 }
 
 func RenderPage(w http.ResponseWriter, temp string) {
+	tc := app.TemplateCache
 
-	tc, err := CreateTemplateRender()
-	if err != nil {
-		fmt.Println(err)
-	}
+	// tc, err := CreateTemplateRender()
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
 	t, ok := tc[temp]
 	if !ok {
 		fmt.Println(ok)
@@ -32,7 +33,7 @@ func RenderPage(w http.ResponseWriter, temp string) {
 	buf := new(bytes.Buffer)
 
 	_ = t.Execute(buf, nil)
-	_, err = buf.WriteTo(w)
+	_, err := buf.WriteTo(w)
 
 	if err != nil {
 		log.Fatal(err)
