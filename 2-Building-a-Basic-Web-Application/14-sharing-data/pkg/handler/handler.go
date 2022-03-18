@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/config"
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/models"
 	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/render"
 )
 
@@ -33,12 +34,17 @@ func NewHandlers(r *Repository) {
 
 func (m *Repository) HomePage(w http.ResponseWriter, r *http.Request) {
 
-	render.RenderPages(w, "home.gohtml")
+	render.RenderPages(w, "home.gohtml", &models.TemplateData{})
 
 }
 
 func (m *Repository) AboutPage(w http.ResponseWriter, r *http.Request) {
 
-	render.RenderPages(w, "about.gohtml")
+	StringMap := make(map[string]string)
+	StringMap["test"] = "Hello , I am working"
+
+	render.RenderPages(w, "about.gohtml", &models.TemplateData{
+		StringMap: StringMap,
+	})
 
 }

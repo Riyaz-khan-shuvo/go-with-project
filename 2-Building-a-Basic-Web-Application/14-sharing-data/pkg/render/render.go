@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/config"
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/models"
 )
 
 var functions = template.FuncMap{}
@@ -19,7 +20,11 @@ func NewTemplate(a *config.AppConfig) {
 	app = a
 }
 
-func RenderPages(w http.ResponseWriter, temp string) {
+func AddDefaultData(td *models.TemplateData) *models.TemplateData {
+	return td
+}
+
+func RenderPages(w http.ResponseWriter, temp string, td *models.TemplateData) {
 	var tc map[string]*template.Template
 
 	if app.UseCache {
@@ -39,7 +44,9 @@ func RenderPages(w http.ResponseWriter, temp string) {
 	}
 	buf := new(bytes.Buffer)
 
-	_ = t.Execute(buf, nil)
+	td = AddDefaultData(td)
+
+	_ = t.Execute(buf, td)
 	_, err := buf.WriteTo(w)
 
 	if err != nil {
