@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Riyaz-khan-shuvo/go-practice/2-11-app-config/pkg/config"
-	"github.com/Riyaz-khan-shuvo/go-practice/2-11-app-config/pkg/handler"
-	"github.com/Riyaz-khan-shuvo/go-practice/2-11-app-config/pkg/render"
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/config"
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/handler"
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/render"
 )
 
 const portNumber string = ":3555"

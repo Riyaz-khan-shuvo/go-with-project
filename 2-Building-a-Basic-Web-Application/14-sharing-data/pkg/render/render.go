@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/Riyaz-khan-shuvo/go-practice/2-11-app-config/pkg/config"
+	"github.com/Riyaz-khan-shuvo/go-with-project/2-Building-a-Basic-Web-Application/14-sharing-data/pkg/config"
 )
 
 var functions = template.FuncMap{}
