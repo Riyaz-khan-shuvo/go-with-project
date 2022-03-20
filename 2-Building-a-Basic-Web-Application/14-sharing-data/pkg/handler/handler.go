@@ -41,7 +41,7 @@ func (m *Repository) HomePage(w http.ResponseWriter, r *http.Request) {
 func (m *Repository) AboutPage(w http.ResponseWriter, r *http.Request) {
 
 	StringMap := make(map[string]string)
-	StringMap["test"] = "Hello , I am working"
+	StringMap["test"] = "Hello , I am working and I am from Template"
 
 	render.RenderPages(w, "about.gohtml", &models.TemplateData{
 		StringMap: StringMap,
